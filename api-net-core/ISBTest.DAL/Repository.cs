@@ -7,6 +7,7 @@ namespace ISBTest.DAL;
 
 public interface IRepository<TEntity> where TEntity : class
 {
+    IQueryable<TEntity> Query(Expression<Func<TEntity, bool>>? filter = null, bool asNoTracking = true);
     Task<List<TEntity>> List(Expression<Func<TEntity, bool>>? filter = null, bool asNoTracking = true);
     Task<TEntity?> Get(Expression<Func<TEntity, bool>>? filter = null, bool asNoTracking = true);
     Task Add(TEntity entity);
@@ -14,7 +15,7 @@ public interface IRepository<TEntity> where TEntity : class
 
 public class Repository<TEntity>(IUnitOfWork unitOfWork) : IRepository<TEntity> where TEntity : class
 {
-    // [DEMO ONLY]
+    // [DEMO NOTE]
     // We want to use same scoped DbContext instance.
     // This is to make sure all access to DbContext going through unitOfWork (unitOfWork is injected as "scoped")
     // Why casting to IUnitOfWorkInternal? Because we dont want BL layer to directly access to DbContext.
@@ -30,6 +31,9 @@ public class Repository<TEntity>(IUnitOfWork unitOfWork) : IRepository<TEntity> 
         }
         return query;
     }
+
+    public IQueryable<TEntity> Query(Expression<Func<TEntity, bool>>? filter = null, bool asNoTracking = true)
+        => PrepareQuery(filter, asNoTracking);
 
     public Task<TEntity?> Get(Expression<Func<TEntity, bool>>? filter = null, bool asNoTracking = true)
         => PrepareQuery(filter, asNoTracking).FirstOrDefaultAsync();

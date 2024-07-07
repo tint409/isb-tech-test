@@ -28,7 +28,7 @@ public class PropertyCrudProcessor(IRepository<Property> _repository, IMapper _m
         if (found == null)
             return false;
 
-        _mapper.Map<Property, Property>(entity, found);
+        _mapper.Map(entity, found);
         return true;
     }
 }

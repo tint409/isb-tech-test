@@ -1,14 +1,14 @@
 import { Component, inject } from '@angular/core';
-import { NgFor, NgIf } from '@angular/common';
+import { NgFor, NgIf, DatePipe, DecimalPipe } from '@angular/common';
 import { Property } from '../interfaces/property';
 import { PropertyService } from '../property.service';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [NgFor, NgIf],
+  imports: [NgFor, NgIf, DatePipe, DecimalPipe],
   templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.css'
+  styleUrl: './dashboard.component.css',
 })
 export class DashboardComponent {
 
@@ -16,7 +16,8 @@ export class DashboardComponent {
 
   SelectedProperty: Property | null = {
     id: '',
-    name: 'Not Selected'
+    name: 'Please select a above property',
+    ownershipChanges: []
   };
   AllProperties: Property[] = [];
 

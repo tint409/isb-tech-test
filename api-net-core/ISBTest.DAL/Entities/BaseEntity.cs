@@ -11,7 +11,7 @@ public interface IEntity
 
 public class BaseEntity<TKey> : IEntity where TKey : struct
 {
-    // [DEMO ONLY]
+    // [DEMO NOTE]
     // Some commonly used properties are listed here.
     // Some auto-populated value properties are also be handled in 1 place, see `ISBTestDbContext.cs` to know how CreatedAt and UpdatedAt populated.
 

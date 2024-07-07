@@ -21,7 +21,9 @@ builder.Services.AddAutoMapper(typeof(Program));
 
 AddGenericServices(builder.Services)
     .AddScoped<IUnitOfWork, UnitOfWork>()
-    .AddScoped<IPropertyCrudProcessor, PropertyCrudProcessor>();
+    .AddScoped<IPropertyCrudProcessor, PropertyCrudProcessor>()
+    .AddScoped<IDataLoader<Property>, PropertyDataLoader>()
+    .AddScoped<IPropertyChangeOwnerProcessor, PropertyChangeOwnerProcessor>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -57,7 +59,7 @@ static IServiceCollection AddGenericServices(IServiceCollection services)
     // Normally, we want these registration logic to be implemented in each project.
     // But I keep all here to simplify the demo.
 
-    var allTypes = typeof(DataAccessRegistration).Assembly.GetTypes();
+    var allTypes = typeof(Property).Assembly.GetTypes();
     foreach (var entityType in allTypes)
     {
         if (entityType.Namespace == typeof(Property).Namespace)

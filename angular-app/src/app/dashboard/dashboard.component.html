@@ -1,6 +1,28 @@
-<ul>
+<ul class="property-list">
     <li *ngFor="let item of AllProperties" (click)="onClick(item)">{{item.name}}</li>
 </ul>
 <div *ngIf="SelectedProperty">
     <h2>{{SelectedProperty.name}}</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Property Name</th>
+                <th>Asking Price</th>
+                <th>Owner</th>
+                <th>Date of Purchase</th>
+                <th>Sold At Price</th>
+                <th>Sold At Price in USD</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let changeItem of SelectedProperty.ownershipChanges">
+                <td>{{SelectedProperty.name}}</td>
+                <td>{{changeItem.askingPrice.amount | number : '1.2-2'}}</td>
+                <td>{{changeItem.contact.firstName + ' ' + changeItem.contact.lastName}}</td>
+                <td>{{changeItem.effectiveDate | date}}</td>
+                <td>{{changeItem.soldPrice.amount | number : '1.2-2'}}</td>
+                <td>{{changeItem.soldPriceAtUsd.amount | number : '1.2-2'}}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>

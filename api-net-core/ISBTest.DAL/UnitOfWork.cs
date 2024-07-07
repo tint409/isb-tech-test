@@ -5,7 +5,7 @@ namespace ISBTest.DAL;
 
 public class UnitOfWork : IUnitOfWork, IUnitOfWorkInternal
 {
-    // [DEMO ONLY]
+    // [DEMO NOTE]
     // We want to save all changes at once after http request is finished, to avoid multiple db hits.
 
     private readonly ISBTestDbContext _dbContext;
