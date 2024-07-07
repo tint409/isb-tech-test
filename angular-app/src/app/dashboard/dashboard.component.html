@@ -1,0 +1,6 @@
+<ul>
+    <li *ngFor="let item of AllProperties" (click)="onClick(item)">{{item.name}}</li>
+</ul>
+<div *ngIf="SelectedProperty">
+    <h2>{{SelectedProperty.name}}</h2>
+</div>
