@@ -1,5 +1,10 @@
 # isb-tech-test
 
+Versions:
+
+- Angular v17
+- .Net Core v8
+
 How to run the project:
 
 - Update your connection string in `appsettings.Development.json`
