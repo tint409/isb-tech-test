@@ -4,6 +4,7 @@ using ISBTest.DAL.DataProviders;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ISBTest.DAL.Migrations
 {
     [DbContext(typeof(ISBTestDbContext))]
-    partial class ISBTestDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240707101804_OtherTables")]
+    partial class OtherTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,32 +54,6 @@ namespace ISBTest.DAL.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Contact");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("639812a1-ad91-44ac-946b-c9c0ad0fc908"),
-                            CreatedAt = new DateTime(2024, 7, 7, 10, 29, 57, 356, DateTimeKind.Utc).AddTicks(4070),
-                            FirstName = "Carmen",
-                            LastName = "Attard",
-                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = new Guid("3714dabc-2e57-43e3-8eb1-89a0a78ed02f"),
-                            CreatedAt = new DateTime(2024, 7, 7, 10, 29, 57, 356, DateTimeKind.Utc).AddTicks(4072),
-                            FirstName = "Joshua",
-                            LastName = "Mifsud",
-                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = new Guid("2370b0cc-d432-4608-9ce4-922017f9ee8e"),
-                            CreatedAt = new DateTime(2024, 7, 7, 10, 29, 57, 356, DateTimeKind.Utc).AddTicks(4073),
-                            FirstName = "Joe",
-                            LastName = "Borg",
-                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        });
                 });
 
             modelBuilder.Entity("ISBTest.DAL.Entities.OwnershipChange", b =>
@@ -107,26 +84,6 @@ namespace ISBTest.DAL.Migrations
                     b.HasIndex("ContactId");
 
                     b.ToTable("OwnershipChange");
-
-                    b.HasData(
-                        new
-                        {
-                            PropertyId = new Guid("872a1a41-cb52-4db9-ac88-4e04ddb5e67d"),
-                            EffectiveDate = new DateTime(2024, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            AskingPrice = "EUR 130000.00",
-                            ContactId = new Guid("639812a1-ad91-44ac-946b-c9c0ad0fc908"),
-                            SoldPrice = "EUR 120000.00",
-                            SoldPriceAtUsd = "USD 140000.00"
-                        },
-                        new
-                        {
-                            PropertyId = new Guid("872a1a41-cb52-4db9-ac88-4e04ddb5e67d"),
-                            EffectiveDate = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            AskingPrice = "EUR 150000.00",
-                            ContactId = new Guid("3714dabc-2e57-43e3-8eb1-89a0a78ed02f"),
-                            SoldPrice = "EUR 140000.00",
-                            SoldPriceAtUsd = "USD 165000.00"
-                        });
                 });
 
             modelBuilder.Entity("ISBTest.DAL.Entities.Property", b =>
@@ -164,32 +121,52 @@ namespace ISBTest.DAL.Migrations
                         new
                         {
                             Id = new Guid("872a1a41-cb52-4db9-ac88-4e04ddb5e67d"),
-                            Address = "Hcm Maisonette Address",
-                            CreatedAt = new DateTime(2024, 7, 7, 10, 29, 57, 356, DateTimeKind.Utc).AddTicks(3987),
-                            DateOfRegistration = new DateTime(2024, 7, 7, 10, 29, 57, 356, DateTimeKind.Utc).AddTicks(3989),
-                            Name = "Hcm Maisonette",
-                            Price = "EUR 130000.00",
-                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Address = "Address 1",
+                            CreatedAt = new DateTime(2024, 7, 7, 10, 18, 4, 727, DateTimeKind.Utc).AddTicks(2304),
+                            DateOfRegistration = new DateTime(2024, 7, 8, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Name = "Name 1",
+                            Price = "USD 10000.00",
+                            UpdatedAt = new DateTime(2024, 7, 7, 10, 18, 4, 727, DateTimeKind.Utc).AddTicks(2305)
                         },
                         new
                         {
                             Id = new Guid("bf987682-1335-4ecb-808d-51c6bf3a7ed3"),
-                            Address = "Cantho Maisonette Address",
-                            CreatedAt = new DateTime(2024, 7, 7, 10, 29, 57, 356, DateTimeKind.Utc).AddTicks(3991),
-                            DateOfRegistration = new DateTime(2024, 7, 7, 10, 29, 57, 356, DateTimeKind.Utc).AddTicks(3992),
-                            Name = "Cantho Maisonette",
-                            Price = "EUR 110000.00",
-                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Address = "Address 2",
+                            CreatedAt = new DateTime(2024, 7, 7, 10, 18, 4, 727, DateTimeKind.Utc).AddTicks(2311),
+                            DateOfRegistration = new DateTime(2024, 7, 9, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Name = "Name 2",
+                            Price = "USD 20000.00",
+                            UpdatedAt = new DateTime(2024, 7, 7, 10, 18, 4, 727, DateTimeKind.Utc).AddTicks(2311)
                         },
                         new
                         {
                             Id = new Guid("b456b0aa-57cf-4d84-82e9-6347c3c6dcf1"),
-                            Address = "Penhouse",
-                            CreatedAt = new DateTime(2024, 7, 7, 10, 29, 57, 356, DateTimeKind.Utc).AddTicks(3994),
-                            DateOfRegistration = new DateTime(2024, 7, 7, 10, 29, 57, 356, DateTimeKind.Utc).AddTicks(3994),
-                            Name = "Penhouse",
-                            Price = "EUR 430000.00",
-                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Address = "Address 3",
+                            CreatedAt = new DateTime(2024, 7, 7, 10, 18, 4, 727, DateTimeKind.Utc).AddTicks(2328),
+                            DateOfRegistration = new DateTime(2024, 7, 10, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Name = "Name 3",
+                            Price = "USD 30000.00",
+                            UpdatedAt = new DateTime(2024, 7, 7, 10, 18, 4, 727, DateTimeKind.Utc).AddTicks(2328)
+                        },
+                        new
+                        {
+                            Id = new Guid("fe9e1bb2-1528-429b-909f-71d7126285e1"),
+                            Address = "Address 4",
+                            CreatedAt = new DateTime(2024, 7, 7, 10, 18, 4, 727, DateTimeKind.Utc).AddTicks(2331),
+                            DateOfRegistration = new DateTime(2024, 7, 11, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Name = "Name 4",
+                            Price = "USD 40000.00",
+                            UpdatedAt = new DateTime(2024, 7, 7, 10, 18, 4, 727, DateTimeKind.Utc).AddTicks(2332)
+                        },
+                        new
+                        {
+                            Id = new Guid("cbe6114c-7a72-400b-98fa-86d725a8cb22"),
+                            Address = "Address 5",
+                            CreatedAt = new DateTime(2024, 7, 7, 10, 18, 4, 727, DateTimeKind.Utc).AddTicks(2334),
+                            DateOfRegistration = new DateTime(2024, 7, 12, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Name = "Name 5",
+                            Price = "USD 50000.00",
+                            UpdatedAt = new DateTime(2024, 7, 7, 10, 18, 4, 727, DateTimeKind.Utc).AddTicks(2334)
                         });
                 });
 
